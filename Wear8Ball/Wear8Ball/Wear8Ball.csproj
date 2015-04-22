@@ -79,5 +79,9 @@
     <AndroidResource Include="Resources\layout\main_activity.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\eightball.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\eightball.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\eightball.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\eightball.png" />
   </ItemGroup>
 </Project>
