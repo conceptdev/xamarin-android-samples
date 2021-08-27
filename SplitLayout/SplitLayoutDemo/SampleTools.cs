@@ -2,6 +2,7 @@
 using Android.Views;
 using Android.Widget;
 using AndroidX.Window;
+using AndroidX.Window.Layout;
 
 namespace SplitLayoutDemo
 {
