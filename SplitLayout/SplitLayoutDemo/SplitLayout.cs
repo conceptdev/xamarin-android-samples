@@ -3,7 +3,8 @@ using Android.Graphics;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using AndroidX.Window;
+using AndroidX.Window.Layout;
+using Java.Interop;
 using System.Linq;
 
 namespace SplitLayoutDemo
@@ -119,7 +120,7 @@ namespace SplitLayoutDemo
             var df = windowLayoutInfo.DisplayFeatures.FirstOrDefault();
             if (IsValidFoldFeature(df))
             {
-                var feature = df as FoldingFeature;
+                var feature = df.JavaCast<IFoldingFeature>();
                 var it = SampleTools.GetFeaturePositionInViewRect(df, this);
 
                 if (feature.Bounds.Left == 0)
@@ -183,7 +184,8 @@ namespace SplitLayoutDemo
 
         bool IsValidFoldFeature(IDisplayFeature displayFeature)
         {
-            if (displayFeature is FoldingFeature ff)
+            var ff = displayFeature.JavaCast<IFoldingFeature>();
+            if (ff != null)
             {
                 return SampleTools.GetFeaturePositionInViewRect(ff, this) != null;
             }

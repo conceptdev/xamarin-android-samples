@@ -4,7 +4,8 @@ using Android.Runtime;
 using Android.Util;
 using AndroidX.AppCompat.App;
 using AndroidX.Core.Util;
-using AndroidX.Window;
+using AndroidX.Window.Layout;
+using AndroidX.Window.Java.Layout;
 using Java.Lang;
 using Java.Util.Concurrent;
 
@@ -16,11 +17,15 @@ using Java.Util.Concurrent;
 namespace SplitLayoutDemo
 {
     /** Demo of [SplitLayout]. */
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(
+        Label = "@string/app_name", 
+        Theme = "@style/AppTheme", 
+        MainLauncher = true, 
+        Exported = true)]
     public class MainActivity : AppCompatActivity, IConsumer
     {
         const string TAG = "JWM"; // Jetpack Window Manager
-        WindowManager wm;
+        WindowInfoRepositoryCallbackAdapter wir;
         SplitLayout splitLayout;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -32,19 +37,19 @@ namespace SplitLayoutDemo
 
             splitLayout = FindViewById<SplitLayout>(Resource.Id.split_layout);
 
-            wm = new WindowManager(this);
+            wir = new WindowInfoRepositoryCallbackAdapter(WindowInfoRepository.Companion.GetOrCreate(this));
         }
 
         public override void OnAttachedToWindow()
         {
             base.OnAttachedToWindow();
-            wm.RegisterLayoutChangeCallback(runOnUiThreadExecutor(), this);
+            wir.AddWindowLayoutInfoListener(runOnUiThreadExecutor(), this); // `this` is the IConsumer implementation
         }
 
         public override void OnDetachedFromWindow()
         {
             base.OnDetachedFromWindow();
-            wm.UnregisterLayoutChangeCallback(this);
+            wir.RemoveWindowLayoutInfoListener(this);
         }
 
         public void Accept(Java.Lang.Object newLayoutInfo)  // Object will be WindowLayoutInfo

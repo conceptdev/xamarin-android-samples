@@ -16,7 +16,7 @@
   -->
 
 <resources>
-    <string name="app_name">SplitLayout</string>
+    <string name="app_name">SplitLayout beta01</string>
     <string name="current_state">Current state</string>
     <string name="state_update_log">State update log</string>
     <string name="device_state">Device state</string>
@@ -25,7 +25,7 @@
     <string name="unknown">Unknown</string>
     <string name="not_separating">Not Separated</string>
     <string name="legend">Legend:</string>
-    <string name="content_title">Xamarin demo</string>
+    <string name="content_title">Xamarin.Android Jetpack Window Manager demo</string>
     <string name="green_droid">Green droid</string>
     <string name="display_features">Display features</string>
     <string name="split_layout">Split layout</string>
