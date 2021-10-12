@@ -187,7 +187,13 @@ namespace SplitLayoutDemo
             var ff = displayFeature.JavaCast<IFoldingFeature>();
             if (ff != null)
             {
-                return SampleTools.GetFeaturePositionInViewRect(ff, this) != null;
+                if (ff.IsSeparating)
+                {
+                    return SampleTools.GetFeaturePositionInViewRect(ff, this) != null;
+                }
+                else {
+                    return false; // if not separating, ignore it as a fold
+                }
             }
             return false;
         }
