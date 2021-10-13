@@ -16,7 +16,7 @@
   -->
 
 <resources>
-    <string name="app_name">SplitLayout beta01</string>
+    <string name="app_name">SplitLayout beta02</string>
     <string name="current_state">Current state</string>
     <string name="state_update_log">State update log</string>
     <string name="device_state">Device state</string>
